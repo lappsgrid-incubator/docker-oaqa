@@ -1,4 +1,5 @@
 evaluation:
+	if [ ! -e EvaluationService.war ] ; then wget http://www.anc.org/downloads/docker/EvaluationService.war ; fi
 	/usr/local/bin/docker build -t lappsgrid/evaluation .
 
 push:
