@@ -1,13 +1,20 @@
+DOCKER=/usr/local/bin/docker
+IMAGE=lappsgrid/evaluation
+
 evaluation:
-	if [ ! -e EvaluationService.war ] ; then wget http://www.anc.org/downloads/docker/EvaluationService.war ; fi
-	/usr/local/bin/docker build -t lappsgrid/evaluation .
+	if [ ! -e EvaluationServices.war ] ; then wget http://www.anc.org/downloads/docker/EvaluationServices.war ; fi
+	$(DOCKER) build -t $(IMAGE) .
 
 push:
-	/usr/local/bin/docker push lappsgrid/evaluation
+	$(DOCKER) push $(IMAGE)
+
+tag:
+	if [ -n "$(TAG)" ] ; then $(DOCKER) tag $(IMAGE) $(IMAGE):$(TAG) ; fi
 	
 help:
 	@echo "GOALS"
 	@echo "evaluation - builds the Vassar tomcat server"
 	@echo "push       - uploads the image to hub.docker.com"
+	@echo "tag        - tags the image on hub.docker.com"
 	@echo "help       - displays this help message"
 	@echo
