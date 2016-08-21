@@ -1,4 +1,4 @@
-DOCKER=/usr/local/bin/docker
+DOCKER=/usr/bin/docker
 IMAGE=lappsgrid/evaluation
 
 evaluation:
